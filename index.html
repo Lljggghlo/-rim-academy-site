@@ -1077,7 +1077,7 @@ section{padding:var(--pad-y) 0;position:relative}
   display:flex;flex-wrap:wrap;gap:14px;
   justify-content:space-between;align-items:center;
 }
-.footer-bottom p{color:var(--txt-3);font-size:.82rem}
+.footer-bottom p{color:var(--txt-2);font-size:.82rem}
 .footer-socials{display:flex;gap:10px}
 .social-ico{
   width:36px;height:36px;border-radius:10px;
@@ -1441,7 +1441,7 @@ section{padding:var(--pad-y) 0;position:relative}
   align-items:center;
   justify-content:center;
   gap:42px;
-  transition:opacity .7s cubic-bezier(.4,0,.2,1), visibility .7s, transform .7s cubic-bezier(.4,0,.2,1);
+  transition:opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1);
   overflow:hidden;
   contain:strict;
   will-change:opacity,transform;
@@ -1531,14 +1531,16 @@ section{padding:var(--pad-y) 0;position:relative}
 }
 .splash-bar-fill{
   height:100%;
-  width:0;
+  width:100%;
   background:linear-gradient(90deg, var(--accent), var(--accent-light));
   border-radius:inherit;
   box-shadow:0 0 12px var(--accent-glow);
+  transform:scaleX(0);
+  transform-origin:left center;
   animation:splash-bar-fill 1.4s .5s cubic-bezier(.4,0,.2,1) forwards;
 }
 @keyframes splash-bar-fill{
-  to{width:100%}
+  to{transform:scaleX(1)}
 }
 
 /* État final : disparition */
@@ -1987,8 +1989,8 @@ body.legal-mode .nav-links{display:none}
 <div id="splash-screen" aria-hidden="true">
   <div class="splash-logo">
     <picture>
-      <source srcset="logo.webp" type="image/webp" />
-      <img src="logo.png" alt="RIM Academy" />
+      <source srcset="logo-small.webp 300w, logo.webp 600w" sizes="240px" type="image/webp" />
+      <img src="logo.png" alt="RIM Academy" fetchpriority="high" />
     </picture>
   </div>
   <div class="splash-bar">
@@ -2002,7 +2004,7 @@ body.legal-mode .nav-links{display:none}
   <div class="container nav-inner">
     <a href="#top" class="brand" aria-label="Rim Conciergerie - Accueil">
       <picture>
-      <source srcset="logo.webp" type="image/webp" />
+      <source srcset="logo-small.webp 300w, logo.webp 600w" sizes="(max-width:599px) 100px, 150px" type="image/webp" />
       <img src="logo.png" alt="RIM Academy" width="600" height="402" fetchpriority="high" />
     </picture>
     </a>
@@ -2066,7 +2068,7 @@ body.legal-mode .nav-links{display:none}
           <div class="video-deco">Regarder</div>
           <div class="video-wrap" id="videoWrap" onclick="loadVideo()" role="button" tabindex="0" aria-label="Lire la vidéo">
             <picture>
-      <source srcset="video-thumb.webp" type="image/webp" />
+      <source srcset="video-thumb-mobile.webp 680w, video-thumb.webp 1280w" sizes="(max-width:767px) 680px, 1280px" type="image/webp" />
       <img class="video-thumb" src="video-thumb.jpg" alt="Présentation Rim Conciergerie - Nassim RIM" width="1280" height="720" loading="lazy" />
     </picture>
             <div class="video-play" aria-hidden="true"></div>
