@@ -1,25 +1,8 @@
 # robots.txt — RIM Academy
 # Formation Coaching Conciergerie Airbnb par Nassim RIM
-# https://rim-academy.fr
+# https://www.rim-academy.fr
 
-# Autoriser tous les robots à indexer toutes les pages
 User-agent: *
 Allow: /
 
-# Bloquer l'indexation des fichiers techniques
-Disallow: /*.json$
-Disallow: /*.xml$
-
-# Autoriser explicitement le sitemap
-Allow: /sitemap.xml
-
-# Bot Google : autorisation complète
-User-agent: Googlebot
-Allow: /
-
-# Bot Bing : autorisation complète
-User-agent: Bingbot
-Allow: /
-
-# Emplacement du sitemap
-Sitemap: https://rim-academy.fr/sitemap.xml
+Sitemap: https://www.rim-academy.fr/sitemap.xml
