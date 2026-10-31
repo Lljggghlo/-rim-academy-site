@@ -1239,3 +1239,70 @@ h1,h2,h3,h4{color:var(--text);letter-spacing:-.02em}
 .chip-face b{font-weight:600;color:var(--text)}
 @media (max-width:440px){.chip-face{font-size:12.5px;letter-spacing:-.015em;white-space:nowrap;max-width:100%}.chip-face img{width:24px;height:24px}}
 @media (max-width:370px){.chip-face{white-space:normal;text-align:left}}
+
+/* =========================================================
+   V10 — Avis Trustpilot : score en grand + cartes défilantes
+   ========================================================= */
+.rv-score{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:6px 18px;margin-top:56px;padding:22px 22px;border-radius:26px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.rv-big{display:flex;align-items:baseline;gap:6px;padding-right:18px;border-right:1px solid var(--line-2)}
+.rv-big b{font-family:var(--f-display);font-weight:700;font-size:clamp(2.6rem,11vw,3.4rem);line-height:1;letter-spacing:-.05em;
+  color:#D70F45;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.rv-big span{font-size:14px;color:var(--muted)}
+.rv-meta p{margin:6px 0 0;font-size:14.5px;color:var(--muted);line-height:1.4}
+.rv-meta b{color:var(--text)}
+.rv-tp{display:inline-flex;align-items:center;gap:4px;font-weight:600;color:var(--text);white-space:nowrap}
+.rv-tp svg{width:15px;height:15px;color:#00B67A}
+.rv-all{grid-column:1 / -1;justify-self:start;margin-top:10px;display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;background:var(--pink-50);color:var(--rausch);font-weight:600;font-size:14.5px;text-decoration:none;transition:background .2s}
+.rv-all::after{content:"→"}
+.rv-all:hover{background:var(--pink-100)}
+
+.rv-stars{display:inline-flex;gap:3px}
+.rv-stars i{width:16px;height:16px;border-radius:3px;background:var(--rausch);position:relative}
+.rv-stars i::before{content:"";position:absolute;inset:2.5px;background:#fff;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.rv-stars-lg i{width:22px;height:22px;border-radius:4px}
+.rv-stars-lg i::before{inset:3.5px}
+
+.rv-track{display:grid;grid-auto-flow:column;grid-auto-columns:84%;gap:14px;margin:16px calc(var(--pad) * -1) 0;padding:6px var(--pad) 18px;
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);scrollbar-width:none}
+.rv-track::-webkit-scrollbar{display:none}
+.rv{position:relative;display:flex;flex-direction:column;gap:14px;scroll-snap-align:start;padding:24px 22px 20px;border-radius:26px;
+  background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);text-decoration:none;color:inherit;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.rv::before{content:"“";position:absolute;right:18px;top:-6px;font-family:var(--f-accent);font-size:110px;line-height:1;color:var(--pink-200);pointer-events:none}
+.rv:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(0,0,0,.04),0 24px 48px -20px rgba(215,15,69,.25)}
+.rv blockquote{margin:0;flex:1;font-size:17px;line-height:1.5;color:var(--text);font-weight:500;letter-spacing:-.01em}
+.rv footer{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:4px 12px;padding-top:14px;border-top:1px solid var(--line)}
+.rv-av{grid-row:span 2;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--pink-100);color:var(--rausch);font-weight:700;font-size:16px}
+.rv-who{display:grid;line-height:1.3}
+.rv-who b{font-size:15px;color:var(--text)}
+.rv-who span{font-size:13px;color:var(--muted)}
+.rv-src{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--muted)}
+.rv-src svg{width:13px;height:13px;color:#00B67A}
+@media (min-width:720px){
+  .rv-score{grid-template-columns:auto 1fr auto;padding:24px 28px}
+  .rv-all{grid-column:auto;margin-top:0;justify-self:end}
+  .rv-track{grid-auto-columns:46%}
+}
+@media (min-width:980px){
+  .rv-track{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);margin-inline:0;padding-inline:0;overflow:visible}
+}
+#testimonials .rv{background:#fff}
+
+/* =========================================================
+   V11 — Avis : codes couleur Trustpilot (vert), sans répétition
+   ========================================================= */
+:root{--tp:#00B67A;--tp-ink:#007A52;--tp-50:#EFFAF5;--tp-100:#DDF5EA;--tp-200:#BDEBD6}
+.rv-pill{display:inline-flex;align-items:center;gap:7px;margin:56px 0 0;padding:8px 15px;border-radius:999px;background:var(--tp);color:#fff;font-weight:600;font-size:15px;letter-spacing:-.01em;box-shadow:0 8px 20px -10px rgba(0,182,122,.6)}
+.rv-pill svg{width:16px;height:16px}
+.rv-score{margin-top:14px;border-color:var(--tp-200)}
+.rv-big b{color:var(--tp-ink);background:none;-webkit-text-fill-color:var(--tp-ink)}
+.rv-stars i{background:var(--tp);border-radius:2px}
+.rv-tp svg,.rv-src svg{color:var(--tp)}
+.rv-all{background:var(--tp-50);color:var(--tp-ink)}
+.rv-all:hover{background:var(--tp-100)}
+.rv{border-color:var(--tp-100)}
+.rv::before{color:var(--tp-200)}
+.rv:hover{box-shadow:0 2px 4px rgba(0,0,0,.04),0 24px 48px -20px rgba(0,182,122,.3)}
+.rv blockquote{padding-right:42px}
+.rv-av{background:var(--tp-100);color:var(--tp-ink)}
+.rv-src{color:var(--tp-ink);font-weight:500}
+.rv-pill{background:#00875A;box-shadow:0 8px 20px -10px rgba(0,135,90,.55)}
