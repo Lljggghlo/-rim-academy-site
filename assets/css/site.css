@@ -1,3 +1,7 @@
+/* Polices hébergées sur le site (aucun appel à Google Fonts) */
+@font-face{font-family:"Caveat";font-style:normal;font-weight:600 700;font-display:swap;src:url(/assets/fonts/caveat-700.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/inter-var.woff2) format("woff2")}
+
 /* =========================================================
    RIM Academy — feuille de style unique
    Mobile d'abord (390 px), puis élargissement.
@@ -840,3 +844,398 @@ button{font:inherit;color:inherit}
   .rsteps li b{width:24px;height:24px;margin:0 auto}
 }
 @media (max-width:379px){.rsteps li{white-space:normal;font-size:12px}}
+
+/* =========================================================
+   V6 — Thème clair, inspiration Apple
+   Fond blanc / gris très clair, texte graphite, un seul accent.
+   ========================================================= */
+:root{
+  --ink:#FFFFFF;
+  --ink-2:#FBFBFD;
+  --card:#FFFFFF;
+  --card-2:#F5F5F7;
+  --gray:#F5F5F7;
+  --line:rgba(0,0,0,.08);
+  --line-2:rgba(0,0,0,.12);
+  --text:#1D1D1F;
+  --soft:#424245;
+  --muted:#6E6E73;
+  --faint:#6E6E73;
+  --rausch:#D70F45;
+  --rausch-deep:#D70F45;
+  --rausch-soft:rgba(230,30,77,.07);
+  --rausch-line:rgba(230,30,77,.28);
+  --paper:#F5F5F7;
+  --paper-ink:#1D1D1F;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 12px 32px -14px rgba(0,0,0,.14);
+  --f-display:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter","Helvetica Neue",Arial,sans-serif;
+  --f-body:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Helvetica Neue",Arial,sans-serif;
+  --f-accent:var(--f-display);
+}
+body{background:#fff;color:var(--text);font-size:17px;line-height:1.55;letter-spacing:-.011em}
+:focus-visible{outline:3px solid rgba(230,30,77,.45)}
+.opt:has(input:focus-visible){outline:3px solid rgba(230,30,77,.45)}
+::selection{background:rgba(230,30,77,.16)}
+
+/* Plus aucun effet lumineux, halo, reflet ni éclipse */
+.hero::before,.hero::after,.site-head::after,
+#constat::after,#etapes::after,#testimonials::after,#preuves::after,#pricing::after,.sec-light::after,
+.sec-rausch::before,.offer::before,.offer::after,.final::before,.final::after,
+.hero-cta .btn-primary::after,.offer .btn-primary::after{content:none!important;animation:none!important}
+.big-no{display:none}
+
+/* En-tête : barre blanche translucide */
+.site-head{background:rgba(255,255,255,.8);border-bottom:1px solid var(--line);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}
+.site-head .wrap{height:60px}
+.brand img{height:38px}
+
+/* Typographie */
+h1,h2,h3,h4{color:var(--text);letter-spacing:-.02em}
+.h1{font-weight:700;letter-spacing:-.04em;line-height:1.04;font-size:clamp(2.4rem,10vw,4.75rem);max-width:14ch}
+.h2{font-weight:700;letter-spacing:-.035em;line-height:1.08;font-size:clamp(2rem,6.6vw,3.25rem)}
+.lead,.hero-sub{color:var(--muted);font-size:19px;line-height:1.5}
+.kicker{color:var(--rausch);font-weight:600;font-size:15px;letter-spacing:-.01em}
+.accent{font-family:var(--f-display);font-weight:inherit;font-size:1em;line-height:inherit;letter-spacing:inherit;color:var(--rausch);padding:0}
+.h1 .accent{display:block;font-size:1em;line-height:inherit;margin-top:0}
+.hl{background:none;color:var(--text);font-weight:600;padding:0}
+.sec-light .hl{background:none}
+.note{font-family:var(--f-display);font-size:15px;font-weight:600;color:var(--rausch)}
+.note svg{width:26px;height:20px}
+
+/* Boutons : pilule pleine, sans halo */
+.btn{font-weight:600;font-size:17px;letter-spacing:-.01em;min-height:52px;padding:0 26px}
+.btn-primary{background:var(--rausch);color:#fff;box-shadow:none}
+.btn-primary:hover{background:#BE0D3D;transform:none;box-shadow:none}
+.btn-sm{min-height:38px;padding:0 16px;font-size:14.5px}
+.btn-ghost{color:var(--text);border-color:var(--line-2)}
+
+/* Rythme des sections : blanc / gris clair, sans trait */
+.sec{padding-block:clamp(80px,13vw,136px)}
+.sec + .sec{border-top:0}
+#constat,#about,#comparatif,#pricing,.final{background:var(--gray)}
+#etapes,#testimonials,#pour-qui,#faq{background:#fff}
+.sec-light{background:inherit;color:var(--text)}
+#about.sec-light{background:var(--gray)}
+#faq.sec-light{background:#fff}
+.sec-light p,.sec-light .lead{color:var(--muted)}
+.sec-light .faq details > div,.sec-light .faq details > div p{color:var(--muted)}
+.sec-rausch{background:#fff;color:var(--text)}
+.sec-rausch .h2{color:var(--text)}
+.sec-rausch .accent{color:var(--rausch)}
+.sec-rausch .lead{color:var(--muted)}
+
+/* Haut de page */
+.hero{padding:44px 0 72px}
+.hero-plain{padding:56px 0 80px}
+@media (min-width:980px){.hero-plain{padding:110px 0 120px}.hero-plain .h1{font-size:clamp(3.4rem,5.6vw,5rem)}}
+.chip,.hero .chip{background:var(--gray);border:0;color:var(--soft);font-weight:500;box-shadow:none}
+.chip-dot{background:var(--rausch);box-shadow:none}
+.hero-cta small{color:var(--faint)}
+.facts li{color:var(--soft)}
+.facts b{color:var(--text);font-weight:700}
+.facts svg{color:var(--rausch)}
+@media (min-width:720px){.facts li + li{border-left:1px solid var(--line-2)}}
+
+/* Cartes : blanches, coins arrondis, ombre très légère */
+.card3,.review,.offer,.qualif,.gate,.todo li,.notfor,.stat,.legal .box{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+#testimonials .review,#faq .stat{background:var(--gray);border-color:transparent;box-shadow:none}
+.card3{border-radius:24px}
+.review{border-radius:22px}
+.review:hover{border-color:var(--line-2)}
+
+/* Le constat */
+.bub.them{background:#fff;color:var(--soft);box-shadow:var(--shadow)}
+.bub.me{background:var(--rausch);box-shadow:none}
+.bico{background:var(--rausch-soft);color:var(--rausch)}
+.chat-meta{color:var(--faint)}
+
+/* Étapes */
+.sico{background:#fff;border:1px solid var(--line-2);color:var(--rausch);box-shadow:none}
+.steps li:not(:last-child)::after{background:var(--line-2)}
+.mandat{box-shadow:0 30px 60px -30px rgba(0,0,0,.28),0 0 0 1px rgba(0,0,0,.05)}
+.stamp{box-shadow:0 8px 18px -8px rgba(230,30,77,.5)}
+
+/* Qui je suis */
+.about-photo::after{box-shadow:none}
+.stk{box-shadow:0 6px 16px -8px rgba(0,0,0,.3)}
+.stat b{color:var(--rausch);font-weight:700}
+.stat span{color:var(--soft)}
+.gallery img{border-radius:18px;background:var(--gray)}
+.gallery figcaption,.sec-light .gallery figcaption{color:var(--muted)}
+.gallery figcaption b,.sec-light .gallery figcaption b{color:var(--text)}
+.gallery .rate,.sec-light .gallery .rate{color:var(--text)}
+
+/* Témoignages et avis */
+.vplay{border:0;background:var(--gray);box-shadow:var(--shadow)}
+.vplay .pbtn{color:var(--rausch)}
+.tp-head{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.tp-score{color:var(--soft)}
+.tp-score b{color:var(--text)}
+.review blockquote{color:var(--soft)}
+.review footer b{color:var(--text)}
+.tp-line{border-color:var(--line-2);color:var(--soft)}
+
+/* Comparatif */
+.table-wrap{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.compare thead th{color:var(--muted)}
+.compare tbody th{color:var(--text)}
+.compare .us{background:var(--rausch-soft);color:var(--text)}
+.compare thead .us{color:var(--rausch);border-top:2px solid var(--rausch)}
+.yes{background:var(--rausch)}
+.no{background:rgba(0,0,0,.05);color:var(--faint)}
+.mid{background:rgba(0,0,0,.05);color:var(--soft)}
+
+/* Qui je n'accompagne pas */
+.notfor,.sec-rausch .notfor{background:var(--gray);border:0;box-shadow:none}
+.sec-rausch .notfor li strong,.notfor li strong{color:var(--text)}
+.sec-rausch .notfor li span,.notfor li span{color:var(--muted)}
+.sec-rausch .notfor .closing,.notfor .closing{color:var(--soft);border-top-color:var(--line-2)}
+.notfor li svg{color:var(--rausch)}
+
+/* Offre */
+.offer{background:#fff;border:1px solid var(--line);overflow:visible;box-shadow:0 1px 2px rgba(0,0,0,.04),0 30px 60px -30px rgba(0,0,0,.2)}
+.offer-top span,.offer-note{color:var(--muted)}
+.list-check li{color:var(--soft)}
+.list-check b{color:var(--text)}
+.list-check svg,.checks svg{color:var(--rausch)}
+.pill-pk{background:var(--rausch-soft)!important;border-color:transparent!important;color:var(--text)!important}
+.pills li{background:var(--gray);border:0;color:var(--soft)}
+
+/* FAQ */
+.faq,.sec-light .faq{border-top-color:var(--line-2)}
+.faq details,.sec-light .faq details{border-bottom-color:var(--line-2)}
+.faq summary,.sec-light .faq summary{color:var(--text);font-weight:600;font-size:18px}
+.faq summary::after{color:var(--muted)}
+
+/* Dernier appel */
+.final{padding-bottom:var(--sec)}
+.how li span{background:#fff;color:var(--rausch);border:1px solid var(--line);box-shadow:var(--shadow)}
+.how li b{color:var(--soft);font-weight:600}
+.how li:not(:last-child)::after{border-top:1.5px dashed var(--line-2)}
+
+/* Pied de page */
+.site-foot{background:var(--gray);border-top:1px solid var(--line);color:var(--muted)}
+.foot-grid h2{color:var(--text)}
+.foot-grid img{height:52px}
+.foot-grid a:hover,.linklike:hover{color:var(--text)}
+
+/* Formulaires et réservation */
+.input,.select,.textarea{background:#fff;border:1px solid var(--line-2);color:var(--text)}
+.input:focus,.select:focus,.textarea:focus{border-color:var(--rausch);box-shadow:0 0 0 4px rgba(230,30,77,.12)}
+.field label,.field .lab{color:var(--text);font-weight:500}
+.err,.input[aria-invalid="true"]{color:#D70015}
+.input[aria-invalid="true"]{border-color:#D70015}
+.consent a{color:var(--text)}
+.opt-check{color:var(--soft)}
+.qualif{border-radius:28px}
+.qbar{background:rgba(0,0,0,.07)}
+.opt{background:#fff;border:1px solid var(--line-2)}
+.opt:hover{border-color:rgba(0,0,0,.24)}
+.opt .dot{border-color:#C7C7CC}
+.opt:has(input:checked){background:var(--rausch-soft);border-color:var(--rausch)}
+.q-step legend{font-weight:700}
+.back:hover{color:var(--text)}
+.result p{color:var(--muted)}
+.cal{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.warn{color:#B25000}
+.rsteps li{border:1px solid var(--line-2);color:var(--muted);background:#fff}
+.rsteps li b{background:rgba(0,0,0,.06);color:var(--soft)}
+.rsteps li.on{border-color:var(--rausch);color:var(--text);background:var(--rausch-soft)}
+.rsteps li.on b{background:var(--rausch);color:#fff}
+.rsteps li.done{color:var(--soft)}
+.todo li b{background:var(--rausch-soft);color:var(--rausch)}
+.todo li span{color:var(--soft)}
+.unlocked{color:#007F55}
+
+/* Fenêtres, bandeau cookies, pages légales */
+.optin{background:#fff;color:var(--text);border:0;box-shadow:0 40px 100px -20px rgba(0,0,0,.35)}
+.optin::backdrop{background:rgba(0,0,0,.35)}
+.x{border-color:var(--line-2);color:var(--text)}
+.cookie{background:rgba(255,255,255,.96);border:1px solid var(--line);color:var(--soft);box-shadow:0 20px 60px -20px rgba(0,0,0,.3);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+.btn-choice{background:var(--gray);border:0;color:var(--text);font-weight:600}
+.btn-choice:hover{background:#E8E8ED}
+.legal p,.legal li,.legal th,.legal td{color:var(--soft)}
+.legal th{color:var(--text)}
+
+/* Bouton WhatsApp : plus discret */
+.wa{box-shadow:0 10px 30px -10px rgba(0,0,0,.3)}
+
+/* Écran de chargement blanc */
+.splash{background:#fff}
+.splash-bar{background:rgba(0,0,0,.08)}
+.splash-bar i{background:var(--rausch);box-shadow:none}
+
+@media (min-width:720px){.offer{padding:44px 44px}}
+.chat .bub.me{box-shadow:0 10px 24px -14px rgba(230,30,77,.45)}
+.review .src{color:#007A52}
+.bub.me small{opacity:1;color:#fff}
+
+/* =========================================================
+   V7 — Clair + couleur : écriture rose d'origine, touches colorées
+   ========================================================= */
+:root{
+  --f-accent:"Caveat","Segoe Print","Bradley Hand",cursive;
+  --grad-text:linear-gradient(100deg,#D70F45 10%,#F0532B 95%);
+  --c1:#D70F45;--c1b:#FFE8EE;
+  --c2:#C2410C;--c2b:#FFEDD5;
+  --c3:#6D28D9;--c3b:#EDE9FE;
+  --c4:#0369A1;--c4b:#E0F2FE;
+  --c5:#047857;--c5b:#D1FAE5;
+  --c6:#B45309;--c6b:#FEF3C7;
+}
+
+/* L'écriture manuscrite rose revient, en dégradé rose → corail */
+.accent{font-family:var(--f-accent);font-weight:700;font-size:1.28em;line-height:.85;letter-spacing:0;padding:0 .04em;
+  color:#D70F45;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.h1 .accent{display:block;font-size:1.3em;line-height:.95;margin-top:.06em;padding-bottom:.06em}
+.note{font-family:var(--f-accent);font-size:24px;font-weight:700}
+
+/* Haut de page : aurore pastel derrière le titre */
+.hero.hero::before{content:""!important;position:absolute;inset:0;height:auto;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(38% 46% at 18% 12%,rgba(255,170,190,.55),transparent 70%),
+    radial-gradient(34% 40% at 84% 18%,rgba(255,196,150,.5),transparent 70%),
+    radial-gradient(40% 44% at 60% 72%,rgba(200,180,255,.38),transparent 72%),
+    linear-gradient(180deg,rgba(255,255,255,0) 70%,#fff 100%);
+  animation:none!important}
+.hero{isolation:isolate}
+.chip,.hero .chip{background:rgba(255,255,255,.75);border:1px solid rgba(0,0,0,.06);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+
+/* Petit titre de section en pastille teintée */
+.kicker{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:var(--rausch-soft);font-size:14px}
+.center .kicker{margin-inline:auto}
+
+/* Icônes en tuiles colorées, une couleur par élément */
+.sico,.bico,.how li span{border:0;box-shadow:none}
+.steps li:nth-child(6n+1) .sico,.chat .bub:nth-child(4n+1) .bico,.how li:nth-child(3n+1) span{background:var(--c1b);color:var(--c1)}
+.steps li:nth-child(6n+2) .sico,.chat .bub:nth-child(4n+2) .bico,.how li:nth-child(3n+2) span{background:var(--c3b);color:var(--c3)}
+.steps li:nth-child(6n+3) .sico,.chat .bub:nth-child(4n+3) .bico,.how li:nth-child(3n+3) span{background:var(--c2b);color:var(--c2)}
+.steps li:nth-child(6n+4) .sico,.chat .bub:nth-child(4n+4) .bico{background:var(--c4b);color:var(--c4)}
+.steps li:nth-child(6n+5) .sico{background:var(--c5b);color:var(--c5)}
+.steps li:nth-child(6n+6) .sico{background:var(--c6b);color:var(--c6)}
+.facts li:nth-child(4n+1) svg{color:var(--c1)}.facts li:nth-child(4n+2) svg{color:var(--c3)}
+.facts li:nth-child(4n+3) svg{color:var(--c2)}.facts li:nth-child(4n+4) svg{color:var(--c4)}
+.offer .list-check li:nth-child(6n+1) svg{color:var(--c1)}.offer .list-check li:nth-child(6n+2) svg{color:var(--c3)}
+.offer .list-check li:nth-child(6n+3) svg{color:var(--c2)}.offer .list-check li:nth-child(6n+4) svg{color:var(--c4)}
+.offer .list-check li:nth-child(6n+5) svg{color:var(--c5)}.offer .list-check li:nth-child(6n+6) svg{color:var(--c6)}
+
+/* Bulle de réponse et chiffre « 50 » en dégradé */
+.bub.me{background:linear-gradient(135deg,#D70F45,#E5383B)}
+.stat b{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:clamp(2.2rem,7vw,2.8rem)}
+
+/* « Qui je n'accompagne pas » : fond rosé très léger */
+#pour-qui{background:linear-gradient(180deg,#FFF3F5 0%,#FFF8F3 100%)}
+#pour-qui .notfor{background:#fff;box-shadow:var(--shadow)}
+
+/* Offre : contour en dégradé et halo coloré discret */
+#pricing{isolation:isolate;overflow:hidden}
+#pricing .offer{position:relative;border:2px solid transparent;
+  background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#D70F45,#F0532B 50%,#8B5CF6) border-box;
+  box-shadow:0 30px 70px -30px rgba(215,15,69,.35),0 20px 60px -30px rgba(139,92,246,.3)}
+
+/* Dernier appel : grand bloc coloré */
+.final{background:linear-gradient(135deg,#D70F45 0%,#E8344A 55%,#F0602E 100%);color:#fff}
+.final .h2{color:#fff}
+.final .accent{background:none;-webkit-text-fill-color:#fff;color:#fff}
+.final .how li span{background:rgba(255,255,255,.18);color:#fff}
+.final .how li b{color:#fff}
+.final .how li:not(:last-child)::after{border-top-color:rgba(255,255,255,.5)}
+.final .btn-primary{background:#fff;color:#D70F45}
+.final .btn-primary:hover{background:#FFF0F3}
+.final .hero-cta small{color:rgba(255,255,255,.92)}
+.final :focus-visible{outline-color:#fff}
+
+/* Pied de page : liseré dégradé en haut */
+.site-foot{border-top:0;position:relative}
+.site-foot::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#D70F45,#F0532B,#8B5CF6)}
+
+/* Galerie : badges et étoiles plus vivants */
+.gallery .rate svg{color:#F0532B}
+.kicker{color:#B80C3B}
+
+/* =========================================================
+   V8 — Uniquement rose et blanc
+   ========================================================= */
+:root{
+  --grad-text:linear-gradient(100deg,#C40C40 0%,#E8336A 100%);
+  --pink-50:#FFF5F7;--pink-100:#FFE8EE;--pink-200:#FFD1DC;
+}
+/* Haut de page : un seul halo rose, très doux */
+.hero.hero::before{background:
+  radial-gradient(60% 55% at 50% -8%,rgba(255,170,192,.55),rgba(255,209,220,.25) 45%,transparent 75%),
+  linear-gradient(180deg,rgba(255,255,255,0) 70%,#fff 100%)!important}
+
+/* Icônes : toutes en pastille rose pâle */
+.steps li .sico,.chat .bub .bico,.how li span,.steps li:nth-child(n) .sico,.chat .bub:nth-child(n) .bico,.how li:nth-child(n) span{background:var(--pink-100);color:var(--rausch)}
+.facts li:nth-child(n) svg,.offer .list-check li:nth-child(n) svg{color:var(--rausch)}
+.gallery .rate svg{color:var(--rausch)}
+
+/* Bulle, chiffre et offre : rose seulement */
+.bub.me{background:var(--grad-text)}
+#pour-qui{background:var(--pink-50)}
+#pricing .offer{background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#C40C40,#FF8FAB 50%,#E8336A) border-box;
+  box-shadow:0 30px 70px -32px rgba(215,15,69,.32)}
+
+/* Dernier appel : bloc rose profond */
+.final{background:radial-gradient(80% 120% at 50% 0%,#E8336A 0%,#D70F45 45%,#B00B38 100%)}
+
+/* Pied de page : liseré rose */
+.site-foot::before{background:linear-gradient(90deg,transparent,#E8336A 30%,#D70F45 70%,transparent)}
+
+/* Touches premium */
+.btn-primary{box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 10px 24px -12px rgba(215,15,69,.55)}
+.btn-primary:hover{box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 14px 30px -12px rgba(215,15,69,.6)}
+.final .btn-primary{box-shadow:0 12px 30px -12px rgba(80,0,20,.45)}
+.kicker{background:var(--pink-100)}
+.chip-dot{box-shadow:0 0 0 4px rgba(215,15,69,.12)}
+/* Haut de page : fond blanc pur, sans halo */
+.hero.hero::before,.hero.hero::after{content:none!important;background:none!important}
+.hero{background:#fff}
+
+/* =========================================================
+   V9 — Touches originales, section rose, coches alignées
+   ========================================================= */
+/* Pastille du haut avec photo */
+.chip-face{padding:4px 14px 4px 4px;gap:9px}
+.chip-face img{width:28px;height:28px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--pink-200)}
+
+/* Preuve Trustpilot sous le bouton */
+.proof{display:inline-flex;align-items:center;gap:9px;margin-top:4px;padding:7px 14px;border-radius:999px;background:var(--pink-50);color:var(--soft);font-size:14px;text-decoration:none;transition:background .2s}
+.proof:hover{background:var(--pink-100)}
+.proof b{color:var(--text)}
+.pstars{display:inline-flex;gap:2px}
+.pstars i{width:14px;height:14px;background:var(--rausch);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+
+/* Trois chiffres */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0 20px}
+.stats li{display:grid;align-content:start;justify-items:center;gap:6px;padding:18px 8px 16px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);text-align:center}
+.stats b{font-family:var(--f-display);font-weight:700;font-size:clamp(1.9rem,7vw,2.6rem);line-height:1;letter-spacing:-.04em;
+  color:#D70F45;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stats span{font-size:13px;line-height:1.35;color:var(--muted)}
+@media (min-width:720px){.stats li{padding:22px 14px 20px}.stats span{font-size:14px}}
+
+/* « Qui je n'accompagne pas » : grand bloc rose, cartes blanches */
+.sec-pink{position:relative;overflow:hidden;isolation:isolate;color:#fff;
+  background:radial-gradient(80% 120% at 50% 0%,#E8336A 0%,#D70F45 45%,#B00B38 100%)!important}
+.sec-pink .h2{color:#fff}
+.sec-pink .accent{background:none;-webkit-text-fill-color:#fff;color:#fff}
+.sec-pink .lead{color:rgba(255,255,255,.92)}
+.sec-pink .big-no{display:block;position:absolute;right:-12px;bottom:-40px;z-index:-1;font-family:var(--f-accent);font-weight:700;font-size:clamp(9rem,42vw,22rem);line-height:1;color:rgba(255,255,255,.1);pointer-events:none;user-select:none}
+.sec-pink .notfor{background:none!important;border:0;box-shadow:none!important;padding:0;margin-top:36px}
+.sec-pink .notfor ul{display:grid;gap:12px}
+.sec-pink .notfor li{grid-template-columns:44px 1fr;gap:14px;align-items:center;padding:18px;border-radius:22px;background:#fff;box-shadow:0 18px 40px -22px rgba(80,0,20,.45)}
+.sec-pink .notfor li svg{width:44px;height:44px;padding:11px;margin:0;border-radius:14px;background:var(--pink-100);color:var(--rausch)}
+.sec-pink .notfor li strong{color:var(--text)}
+.sec-pink .notfor li span{color:var(--muted)}
+.sec-pink .notfor .closing{margin-top:22px;padding:20px 0 0;border-top:1px solid rgba(255,255,255,.3);color:#fff;font-size:17px}
+.sec-pink :focus-visible{outline-color:#fff}
+@media (min-width:720px){.sec-pink .notfor ul{grid-template-columns:repeat(3,1fr)}.sec-pink .notfor li{grid-template-columns:1fr;align-items:start;padding:24px}}
+
+/* Étapes de réservation : coche dessinée en SVG, parfaitement centrée, en rose */
+.rsteps li b{display:grid;place-items:center;line-height:1}
+.rsteps li.done b{background:var(--rausch) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/62% no-repeat;font-size:0;color:transparent}
+.rsteps li.done b::before{content:none!important}
+.rsteps li.done{border-color:var(--pink-200);color:var(--soft)}
+.chip-face b{font-weight:600;color:var(--text)}
+@media (max-width:440px){.chip-face{font-size:12.5px;letter-spacing:-.015em;white-space:nowrap;max-width:100%}.chip-face img{width:24px;height:24px}}
+@media (max-width:370px){.chip-face{white-space:normal;text-align:left}}
