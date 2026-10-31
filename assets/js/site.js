@@ -6,7 +6,7 @@
    4. Cookies + GA4 + Meta Pixel
    5. Accès à la vidéo (opt-in)
    6. Page vidéo (VSL)
-   7. Questionnaire + calendrier iClosed
+   7. Questionnaire + calendrier Calendly
    8. Vidéos témoignages
    9. Divers (anciens liens, page merci, mandat)
    ========================================================= */
@@ -21,12 +21,9 @@
     // Identifiant YouTube de la VSL. Vide : version sans vidéo.
     youtubeId: '',
 
-    // Lien de l'événement iClosed : la valeur de data-url dans le code d'intégration iClosed.
+    // Lien de ton événement Calendly, ex. https://calendly.com/rim-academy/appel-decouverte
     // Tant qu'il est vide, le calendrier ne s'affiche pas.
-    iclosedEventUrl: '',
-
-    // Identifiant de la question texte iClosed qui reçoit le résumé des réponses.
-    iclosedQualifField: 'qualif',
+    calendlyUrl: '',
 
     // Mesure d'audience et publicité (laisser vide = désactivé).
     ga4Id: '',        // ex. G-ABC123XYZ
@@ -392,24 +389,35 @@
   function showCalendar(summary) {
     var box = $('#res-ok'); box.hidden = false; rstep(3);
     var cal = $('#cal');
-    if (!CFG.iclosedEventUrl) {
+    if (!CFG.calendlyUrl) {
       cal.innerHTML = '<p class="warn">Le calendrier n’est pas encore relié. Écris-moi à rim.conciergerie@gmail.com pour fixer ton appel.</p>';
       return;
     }
     var l = lead(), u = utm(), url;
-    try { url = new URL(CFG.iclosedEventUrl); } catch (e) { return; }
-    if (l.prenom) url.searchParams.set('iclosedName', l.prenom);
-    if (l.email) url.searchParams.set('iclosedEmail', l.email);
-    if (l.tel) url.searchParams.set('iclosedPhone', l.tel);
-    url.searchParams.set(CFG.iclosedQualifField, summary);
+    try { url = new URL(CFG.calendlyUrl); } catch (e) { return; }
+    // Pré-remplissage Calendly : name, email, puis a1 = 1re question (Téléphone), a2 = 2e question (Réponses).
+    if (l.prenom) url.searchParams.set('name', l.prenom);
+    if (l.email) url.searchParams.set('email', l.email);
+    if (l.tel) url.searchParams.set('a1', l.tel);
+    url.searchParams.set('a2', summary);
     Object.keys(u).forEach(function (k) { url.searchParams.set(k, u[k]); });
-    var w = document.createElement('div');
-    w.className = 'iclosed-widget';
-    w.setAttribute('data-url', url.toString());
-    w.setAttribute('title', 'Appel découverte RIM Academy');
-    w.style.width = '100%'; w.style.height = '640px';
-    cal.appendChild(w);
-    loadScript('https://app.iclosed.io/assets/widget.js');
+    url.searchParams.set('embed_domain', location.hostname);
+    url.searchParams.set('embed_type', 'Inline');
+    var f = document.createElement('iframe');
+    f.src = url.toString();
+    f.title = 'Choisir un créneau pour ton appel découverte';
+    f.setAttribute('frameborder', '0');
+    f.style.width = '100%'; f.style.minWidth = '300px'; f.style.height = '760px'; f.style.border = '0';
+    cal.appendChild(f);
+    window.addEventListener('message', function (e) {
+      if (e.origin !== 'https://calendly.com' || !e.data || typeof e.data.event !== 'string') return;
+      if (e.data.event === 'calendly.page_height' && e.data.payload && e.data.payload.height) {
+        f.style.height = e.data.payload.height;
+      }
+      if (e.data.event === 'calendly.event_scheduled') {
+        location.href = '/merci/';
+      }
+    });
     box.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
   }
   function showDq(reasons) {
