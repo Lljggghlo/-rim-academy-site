@@ -23,7 +23,7 @@
 
     // Lien de ton événement Calendly, ex. https://calendly.com/rim-academy/appel-decouverte
     // Tant qu'il est vide, le calendrier ne s'affiche pas.
-    calendlyUrl: '',
+    calendlyUrl: 'https://calendly.com/rim-conciergerie/appel-decouverte-rim-academy',
 
     // Mesure d'audience et publicité (laisser vide = désactivé).
     ga4Id: '',        // ex. G-ABC123XYZ
